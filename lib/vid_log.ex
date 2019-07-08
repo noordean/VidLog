@@ -13,7 +13,15 @@ defmodule VidLog do
       video_info.title,
       "https://www.youtube.com/watch?v=#{video_info.resourceId.videoId}",
       video_info.publishedAt
-    ]
+    ] |> Enum.join(",")
+  end
+
+  def save_csv(video_update) do
+    filename = "vidlogs.csv"
+    unless File.exists?(filename) do
+      File.write!(filename, columns() <> "\n")
+    end
+    File.write!(filename, video_update <> "\n", [:append])
   end
 
   def video_url do
