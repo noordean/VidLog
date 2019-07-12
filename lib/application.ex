@@ -3,10 +3,10 @@ defmodule VidLog.Application do
 
   def start(_type, _args) do
     children = [
-      worker(VidLog.Scheduler, [])
+      {VidLog.Scheduler, []},
     ]
 
-    opts = [strategy: :one_for_one, name: Testtt.Supervisor]
+    opts = [strategy: :one_for_one, name: VidLog.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
