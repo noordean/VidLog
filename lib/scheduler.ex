@@ -12,7 +12,7 @@ defmodule VidLog.Scheduler do
 
     def handle_info(_msg, state) do
       VidLog.run()
-      Process.send_after(self(), "no message to send", 15 * 1000)
+      Process.send_after(self(), "no message to send", 1 * 60 * 1000)
       {:noreply, state}
     end
   end
