@@ -42,7 +42,7 @@ defmodule VidLog do
   end
 
   def video_url(playlist_id) do
-    api_key = "AIzaSyCmUHlqB1KrppgWeEGeeZ3S54OOu_jPYcY"
+    api_key = Application.get_env(:vid_log, :api_key)
     "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=#{playlist_id}&maxResults=1&key=#{api_key}"
   end
 
@@ -50,7 +50,7 @@ defmodule VidLog do
     {:ok, datetime, _} = DateTime.from_iso8601(published_datetime)
     published_date = DateTime.to_date(datetime)
     IO.puts published_date
-    today = ~D[2019-07-13] #Date.utc_today()
+    today = Date.utc_today()
     Date.compare(published_date, today) == :eq
   end
 end
