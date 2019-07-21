@@ -2,6 +2,14 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :vid_log, VidLog.Repo,
+  database: "vid_log_repo",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost"
+
+  config :vid_log,
+      ecto_repos: [VidLog.Repo]
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,

@@ -23,7 +23,9 @@ defmodule VidLog.MixProject do
   defp deps do
     [
       {:poison, "~> 3.1"},
-      {:httpoison, "~> 1.4"}
+      {:httpoison, "~> 1.4"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 end
